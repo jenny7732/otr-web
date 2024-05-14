@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 50px 100px;
+    background-color: #F9E0AE;
+}
+
+header{
+    margin-bottom: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center; 
+}
+
+.logo img {
+    width: 90px;
+    height: 120px;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.logo h1 {
+    color: #B14000;
+    font-size: 50px;
+    margin: 0px;
+}
+
+.logo p {
+    margin: 0px;
+    color: #B14000;
+    font-size: 15px;
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.textbox {
+    width: 470px;
+    height: 280px;
+    background-color: #fff;
+    border-radius: 30px;
+    position: relative;
+    padding: 20px;
+}
+
+.flexbox h2 {
+    margin-top: 0px;
+    color: #682C0E;
+    font-size: 20px;
+}
+
+.textbox textarea {
+    width: 470px;
+    height: 280px;
+    padding: 20px;
+    border-radius: 30px;
+    border: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: #C5C5C5;
+}
+
+.voice-btn,
+.analysis-btn,
+.make-btn {
+    padding: 10px 20px;
+    background-color: #D9D9D9;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    
+}
+
+
+.make-btn,
+.analysis-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.practice {
+    width: 470px;
+    height: 280px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 30px;
+    position: relative;
+}
+
+
+.practice p {
+    margin-bottom: 20px;
+    color: #682C0E;
+    font-size: 14px;
+}
+
+
+
+
