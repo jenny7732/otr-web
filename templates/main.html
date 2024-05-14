@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>올투리</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    
 </head>
 <body>
     <header>
@@ -27,8 +26,8 @@
                 </div>
                 <div class="textbox">
                     <form action="/sentence" method="post">
-                        <textarea name='sentence' placeholder="문장을 입력해 주세요." required></textarea>
-                        <button type="submit" class="make-btn">
+                        <textarea id="input-textarea" name='sentence' placeholder="문장을 입력해 주세요." required></textarea>
+                        <button type="submit" class="make-btn" id="submit-btn">
                             <i class="fa-solid fa-wand-magic-sparkles"></i> 올투리 생성하기
                         </button>                    
                     </form>
@@ -42,7 +41,7 @@
                 </div>
                 <div class="practice">
                     <p>오른쪽 마이크를 클릭하여 <br/> 사투리를 녹음한 뒤, 정확도를 확인해보세요!</p>
-                    <button class="analysis-btn"><i class="fa-solid fa-robot"></i> 정확도 분석하기</button>
+                    <button class="analysis-btn" id="analysis-btn" ><i class="fa-solid fa-robot"></i> 정확도 분석하기</button>
                     <button class="voice-btn"><i class="fa-solid fa-microphone"></i></button>
                     <img src="{{ url_for('static', filename='images/logo.png') }}" alt="배경로고사진">
                 </div>
@@ -50,5 +49,6 @@
             </div>
         </div>
     </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
