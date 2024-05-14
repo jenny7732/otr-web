@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>올투리</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    
 </head>
 <body>
     <header>
@@ -27,8 +26,8 @@
                 </div>
                 <div class="textbox">
                     <form action="/sentence" method="post">
-                        <textarea name='sentence' placeholder="문장을 입력해 주세요." required></textarea>
-                        <button type="submit" class="make-btn">
+                        <textarea id="input-textarea" name='sentence' placeholder="문장을 입력해 주세요." required></textarea>
+                        <button type="submit" class="make-btn" id="submit-btn">
                             <i class="fa-solid fa-wand-magic-sparkles"></i> 올투리 생성하기
                         </button>                    
                     </form>
@@ -50,5 +49,6 @@
             </div>
         </div>
     </main>
+    <script src="{{ url_for('static', filename='js/btn.js') }}"></script>
 </body>
 </html>
