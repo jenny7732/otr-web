@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from synthesize import synthesize_speech
 
 app = Flask(__name__)
 
@@ -10,6 +11,7 @@ def hello_world():
 @app.route('/sentence', methods=['POST'])
 def script():
     sentence = request.form['sentence']
+    synthesize_speech(sentence)
     return sentence
 
 
