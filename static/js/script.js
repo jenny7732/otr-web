@@ -8,3 +8,4 @@ document.getElementById("input-textarea").addEventListener("input", function() {
         submitBtn.style.backgroundColor = "#D9D9D9";
     }
 });
+
