@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>올투리</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
 </head>
 <body>
     <header>
@@ -19,19 +21,32 @@
     <main>
         <div class="container">
             <div class="flexbox">
-                <h2>올투리 들어보기</h2>
+                <div class="wflex">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <h2>올투리 들어보기</h2>
+                </div>
                 <div class="textbox">
-                    <textarea placeholder="문장을 입력해 주세요."></textarea>
-                    <button class="make-btn">올투리 생성하기</button>
+                    <form action="/sentence" method="post">
+                        <textarea name='sentence' placeholder="문장을 입력해 주세요." required></textarea>
+                        <button type="submit" class="make-btn">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> 올투리 생성하기
+                        </button>                    
+                    </form>
+                    
                 </div>
             </div>
             <div class="flexbox">
-                <h2>올투리 연습하기</h2>
-                <div class="practice">
-                    <p>오른쪽 마이크를 클릭하여 사투리를 녹음한 뒤,<br/> 정확도를 확인해보세요!</p>
-                    <button class="voice-btn">음성 입력</button>
-                    <button class="analysis-btn">정확도 분석하기</button>
+                <div class="wflex">
+                    <i class="fa-brands fa-teamspeak"></i>
+                    <h2>올투리 연습하기</h2>
                 </div>
+                <div class="practice">
+                    <p>오른쪽 마이크를 클릭하여 <br/> 사투리를 녹음한 뒤, 정확도를 확인해보세요!</p>
+                    <button class="analysis-btn"><i class="fa-solid fa-robot"></i> 정확도 분석하기</button>
+                    <button class="voice-btn"><i class="fa-solid fa-microphone"></i></button>
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="배경로고사진">
+                </div>
+                
             </div>
         </div>
     </main>
