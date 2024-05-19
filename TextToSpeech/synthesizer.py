@@ -9,7 +9,7 @@ from TTS.utils.synthesizer import Synthesizer
 import g2pk
 g2p = g2pk.G2p()
 
-def normalize_text(text):
+def normalize_text(text, symbols):
     text = text.strip()
 
     for c in ",;:":
@@ -184,7 +184,8 @@ def synthesize(text):
     )
 
     symbols = synthesizer.tts_config.characters.characters
-    wav = synthesizer.tts(text, None, None)
+    final_text = normalize_text(text, symbols)
+    wav = synthesizer.tts(final_text, None, None)
     result_path = os.path.join(base_path, "result", "result.wav")
     sf.write(result_path, wav, 44100)
 
