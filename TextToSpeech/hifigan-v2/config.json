@@ -47,7 +47,7 @@
         "symmetric_norm": true,
         "max_norm": 4.0,
         "clip_norm": true,
-        "stats_path": "/Users/gimmin/Desktop/otr-web/TextToSpeech/hifigan-v2/scale_stats_new.npy"
+        "stats_path": "./TextToSpeech/hifigan-v2/scale_stats_new.npy"
     },
     "eval_split_size": 10,
     "data_path": "/home/2020112546/content/TTS/filelists/wavs",
