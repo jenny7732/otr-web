@@ -167,10 +167,16 @@ def normalize_multiline_text(long_text):
 def synthesize(text):
     base_path = os.path.dirname(__file__)
 
-    tts_model_path = os.path.join(base_path, "glowtts-v2", "best_model.pth.tar")
-    tts_config_path = os.path.join(base_path, "glowtts-v2", "config.json")
-    vocoder_model_path = os.path.join(base_path, "hifigan-v2", "best_model.pth.tar")
-    vocoder_config_path = os.path.join(base_path, "hifigan-v2", "config.json")
+    # tts_model_path = os.path.join(base_path, "glowtts-v2", "best_model.pth.tar")
+    # tts_config_path = os.path.join(base_path, "glowtts-v2", "config.json")
+    # vocoder_model_path = os.path.join(base_path, "hifigan-v2", "best_model.pth.tar")
+    # vocoder_config_path = os.path.join(base_path, "hifigan-v2", "config.json")
+
+
+    tts_model_path = "./TextToSpeech/glowtts-v2/best_model.pth.tar"
+    tts_config_path = "./TextToSpeech/glowtts-v2/config.json"
+    vocoder_model_path = "./TextToSpeech/hifigan-v2/best_model.pth.tar"
+    vocoder_config_path = "./TextToSpeech/hifigan-v2/config.json"
 
     synthesizer = Synthesizer(
         tts_model_path,
@@ -186,7 +192,7 @@ def synthesize(text):
     symbols = synthesizer.tts_config.characters.characters
     final_text = normalize_text(text, symbols)
     wav = synthesizer.tts(final_text, None, None)
-    result_path = os.path.join(base_path, "result", "result.wav")
+    result_path = "./TextToSpeech/result/result.wav"
     sf.write(result_path, wav, 44100)
 
     return wav

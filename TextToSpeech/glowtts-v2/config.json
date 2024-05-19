@@ -47,7 +47,7 @@
         "symmetric_norm": true,
         "max_norm": 4.0,
         "clip_norm": true,
-        "stats_path": "/Users/gimmin/Desktop/otr-web/TextToSpeech/glowtts-v2/scale_stats_new.npy"
+        "stats_path": "./TextToSpeech/glowtts-v2/scale_stats_new.npy"
     },
     "use_phonemes": false,
     "phoneme_language": "ko",
