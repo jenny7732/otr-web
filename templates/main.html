@@ -49,6 +49,21 @@
             </div>
         </div>
     </main>
+      <div id="modalWrap">
+        <div id="modalBody">
+          <span id="closeBtn">X</span> 
+          <div class="modalContainer">
+            <div class="modalLogo">
+                <img src="{{ url_for('static', filename='images/logo2.png') }}" alt="배경로고사진">
+            </div>
+            <div class="modalFlexbox">
+                <h2>당신의 올투리력은 60%</h2>
+                <h4>당신은 아직 서울 사람... ㅡ.ㅡ</h4>
+                <img src="{{ url_for('static', filename='images/graph.png') }}" alt="배경로고사진">
+            </div>
+        </div>
+        </div>
+      </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

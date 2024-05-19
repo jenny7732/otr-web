@@ -133,7 +133,7 @@ header{
 
 .practice img {
     position: absolute;
-    top: -330px;
+    top: -290px;
     right: -70px;
     z-index: -1;
 }
@@ -154,5 +154,85 @@ header{
     margin-bottom: 10px;
 }
 
+#modalWrap {
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none;
+}
 
+#modalBody {
+    width: 515px;
+    height: 340px;
+    padding: 20px;
+    margin: 0;
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #F9E0AE;
+    display: flex;
+    align-items: center;
+}
 
+#closeBtn {
+    font-weight: 100;
+    font-size: 50px;
+    color: #B14000;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: -60px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #F9E0AE;
+    text-align: center;
+    line-height: 50px;
+}
+
+.modalContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+
+.modalLogo img {
+    width: 200px;
+    height: auto;
+    transform: scaleX(-1);
+    margin-top: 10px;
+}
+
+.modalFlexbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%; 
+}
+
+.modalFlexbox img{
+    width: 275px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.modalFlexbox h4,
+.modalFlexbox h2{
+    margin: 0px 0px 10px 0px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #B14000;
+}  
