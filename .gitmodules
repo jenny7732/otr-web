@@ -1,6 +1,6 @@
 [submodule "TextToSpeech/TTS"]
-	path = TextToSpeech
+	path = TextToSpeech/TTS
 	url = https://github.com/sce-tts/TTS.git
 [submodule "TextToSpeech/g2pK"]
-	path = TextToSpeech
+	path = TextToSpeech/g2pK
 	url = https://github.com/sce-tts/g2pK.git
