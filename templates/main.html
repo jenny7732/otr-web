@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
     <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>올투리</title>
@@ -18,6 +19,7 @@
         </div>
     </header>
     <main>
+        <div class="box">
         <div class="container">
             <div class="flexbox">
                 <div class="wflex">
@@ -31,7 +33,6 @@
                             <i class="fa-solid fa-wand-magic-sparkles"></i> 올투리 생성하기
                         </button>                    
                     </form>
-                    
                 </div>
             </div>
             <div class="flexbox">
@@ -41,12 +42,27 @@
                 </div>
                 <div class="practice">
                     <p>오른쪽 마이크를 클릭하여 <br/> 사투리를 녹음한 뒤, 정확도를 확인해보세요!</p>
+                    <audio controls autoplay></audio> 
+                    
                     <button class="analysis-btn" id="analysis-btn" ><i class="fa-solid fa-robot"></i> 정확도 분석하기</button>
-                    <button class="voice-btn"><i class="fa-solid fa-microphone"></i></button>
+
+                    <button class="voice-btn" id="startBtn"><i class="fa-solid fa-microphone"></i></button> 
+                    <button class="voice-btn" id="stopBtn"><i class="fa-solid fa-stop"></i></button>                              
                     <img src="{{ url_for('static', filename='images/logo.png') }}" alt="배경로고사진">
                 </div>
                 
+                
             </div>
+        </div>
+        <div class="audio_sentence">
+            {% if audio_url %}
+                        <audio controls>
+                            <source src="{{ audio_url }}" type="audio/wav">
+                        </audio>
+                        <div class="sentence">{{sentence}}</div>
+            {% endif %}
+        </div>
+        </div>
         </div>
     </main>
       <div id="modalWrap">
@@ -57,7 +73,7 @@
                 <img src="{{ url_for('static', filename='images/logo2.png') }}" alt="배경로고사진">
             </div>
             <div class="modalFlexbox">
-                <h2>당신의 올투리력은 60%</h2>
+                <h2 id="result"> <span id="similarity"></span></h2>
                 <h4>당신은 아직 서울 사람... ㅡ.ㅡ</h4>
                 <img src="{{ url_for('static', filename='images/graph.png') }}" alt="배경로고사진">
             </div>
