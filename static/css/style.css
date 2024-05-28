@@ -45,8 +45,11 @@ header{
 .container {
     margin-top: 200px;
     display: flex;
-    align-items: center;
     justify-content: space-around;
+}
+
+.audio_sentence{
+    margin-left: 40px;
 }
 
 .flexbox {
@@ -99,6 +102,16 @@ header{
     background-color: #fff;
     border: none;
     cursor: pointer;
+    
+}
+
+#startBtn{
+    position: absolute;
+    top: 30px;
+    right: 100px;
+}
+
+#stopBtn{
     position: absolute;
     top: 30px;
     right: 30px;
@@ -152,6 +165,10 @@ header{
     text-align: center;
     align-items: center;
     margin-bottom: 10px;
+}
+
+audio{
+    margin: 10px 0px;
 }
 
 #modalWrap {
