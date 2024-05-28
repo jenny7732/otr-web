@@ -14,7 +14,6 @@ filelock==3.14.0
 Flask==3.0.3
 fonttools==4.51.0
 fsspec==2024.5.0
-g2pK==0.9.3
 gdown==5.2.0
 idna==3.7
 importlib_metadata==7.1.0
@@ -70,7 +69,6 @@ tensorboardX==2.6.2.2
 threadpoolctl==3.5.0
 torch==2.2.2
 tqdm==4.66.4
-TTS==0.0.14.1
 typeguard==4.2.1
 typing_extensions==4.11.0
 tzdata==2024.1
