@@ -3,11 +3,19 @@ import re
 import sys
 from unicodedata import normalize
 import soundfile as sf
+import random
+import string
 
 from TTS.utils.synthesizer import Synthesizer
 
 import g2pk
 g2p = g2pk.G2p()
+
+def generate_random_string(length=8):
+    """랜덤 문자열 생성"""
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for _ in range(length))
+
 
 def normalize_text(text, symbols):
     text = text.strip()
@@ -193,6 +201,13 @@ def synthesize(text):
     final_text = normalize_text(text, symbols)
     wav = synthesizer.tts(final_text, None, None)
     result_path = "./TextToSpeech/result/result.wav"
+    #audio_path = "./static/audio/audio.wav"
     sf.write(result_path, wav, 44100)
-
-    return wav
+    #sf.write(audio_path, wav, 44100)
+    random_path = generate_random_string()
+    audio_dir = f"./static/audio/{random_path}"
+    if not os.path.exists(audio_dir):
+        os.makedirs(audio_dir)
+    audio_path = os.path.join(audio_dir, "audio.wav")
+    sf.write(audio_path, wav, 44100)
+    return audio_path
