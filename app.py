@@ -1,9 +1,10 @@
 from http import HTTPStatus
-import json
+import time
 import os
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, send_file
 from TextToSpeech.synthesizer import synthesize
-from percent import calculate_similarity
+from similarity import get_similarity_score
+from intonnation_graph import plot_pitch
 
 
 app = Flask(__name__)
@@ -16,7 +17,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def hello_world():
     audio_url = request.args.get('audio_url')
     sentence = request.args.get('sentence')
-    return render_template('main.html', audio_url=audio_url, sentence=sentence)
+    return render_template('main.html', audio_url = audio_url, sentence=sentence)
 
 @app.route('/synthesize', methods=['POST'])
 def synthesize_sentence():
@@ -40,15 +41,21 @@ def upload_file():
         file.save(file_path)
         return jsonify({"message": "File successfully uploaded", "file_path": file_path}), 200
     
+
 @app.route('/similarity', methods=['GET'])
-def get_similarity_score():
+def get_similarity_score_route():
     audio_url = request.args.get('audio_url')
     file_path = request.args.get('file_path')
-    
-    # audio_url과 file_path를 이용하여 유사성 점수 계산
-    similarity_score = calculate_similarity(audio_url, file_path)
-    
-    return jsonify({"similarity": similarity_score})
+
+    if not audio_url or not file_path:
+        return jsonify({"error": "Missing audio_url or file_path"}), 400
+
+    try:
+        similarity_score = get_similarity_score(audio_url, file_path)
+        image_path = plot_pitch(audio_url, file_path)
+        return jsonify({"similarity": similarity_score, "imagePath": image_path})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":
