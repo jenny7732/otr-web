@@ -10,41 +10,59 @@ document.getElementById("input-textarea").addEventListener("input", function() {
 });
 
 
-const btn = document.getElementById("analysis-btn"); 
-const modal = document.getElementById("modalWrap"); 
-const closeBtn = document.getElementById("closeBtn"); 
 
-btn.disabled = true;
+document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('analysis-btn');
+    const modal = document.getElementById('modalWrap');
+    const closeBtn = document.getElementById('closeBtn');
+    const scoreElement = document.getElementById('score');
+    const messageElement = document.getElementById('message'); // <h4> 요소
+    const graphImage = document.getElementById("graphImage");
 
-btn.onclick = function () {
-    
-    // analysis-btn 클릭 시 서버에 GET 요청을 보냅니다.
-    // const audioUrl = document.getElementById("audio_url").innerText;
-    
-    fetch(`/similarity`, {method: 'GET'})
-        .then(response => response.json())
-        .then(data => {
-            // 응답에서 similarity를 가져와서 HTML에 표시합니다.
-            const similarity = document.getElementById("similarity");
-            const result = document.getElementById("result");
-            similarity.textContent = data.similarity;
-            result.textContent = `당신의 올투리력은 ${data.similarity}% 입니다`;
-        })
-        .catch(error => console.error('Error:', error));
-    
-    // 모달창을 표시합니다.
-    modal.style.display = "block"; 
-};
+    // URL에서 audio_url 값을 추출
+    const audioUrl = new URLSearchParams(window.location.search).get('audio_url');
+    const filePath = '/Users/user/otr-web/static/audio/userAudio/recorded_audio.wav';
 
-closeBtn.onclick = function () {
-    modal.style.display = "none"; 
-};
+    btn.disabled = false; // 버튼 활성화
 
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none"; 
-    }
-};
+    btn.onclick = function () {
+        fetch(`/similarity?audio_url=${audioUrl}&file_path=${filePath}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                const similarityScore = data.similarity;
+                const imagePath = data.imagePath;
+                scoreElement.textContent = `당신의 올투리력은 ${similarityScore} % 입니다.`;
+                graphImage.src = imagePath;
+
+                // 유사성 점수에 따라 메시지 변경
+                if (similarityScore <= 50) {
+                    messageElement.textContent = "당신은 아직 서울 사람... ㅡ.ㅡ";
+                } else if (similarityScore > 50 && similarityScore < 85) {
+                    messageElement.textContent = "당신은 애매..하네요..";
+                } else {
+                    messageElement.textContent = "당신은 확신의 지방사람!";
+                }
+
+                modal.style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error fetching similarity score:', error);
+                alert('유사성 점수를 가져오는 데 오류가 발생했습니다: ' + error.message);
+            });
+    };
+
+    closeBtn.onclick = function () {
+        modal.style.display = "none";
+    };
+});
 
 
 let audioRecorder;
@@ -77,11 +95,6 @@ function stopRecording(){
             audio.src = url;
             audio.play();
             
-            // // 파일 다운로드
-            // const a = document.createElement('a');
-            // a.href = url;
-            // a.download = 'recorded_audio.wav';
-            // a.click();
             setTimeout(() => {
                 window.URL.revokeObjectURL(url);
             }, 100);
