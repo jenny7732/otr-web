@@ -240,7 +240,7 @@ audio{
 }
 
 .modalFlexbox img{
-    width: 275px;
+    width: 290px;
     height: auto;
     margin-top: 10px;
 }
@@ -253,3 +253,7 @@ audio{
     height: 100%;
     color: #B14000;
 }  
+
+#score{
+    color: #B14000;
+}
