@@ -201,13 +201,11 @@ def synthesize(text):
     final_text = normalize_text(text, symbols)
     wav = synthesizer.tts(final_text, None, None)
     result_path = "./TextToSpeech/result/result.wav"
-    #audio_path = "./static/audio/audio.wav"
     sf.write(result_path, wav, 44100)
-    #sf.write(audio_path, wav, 44100)
     random_path = generate_random_string()
-    audio_dir = f"./static/audio/{random_path}"
+    audio_dir = f"./static/audio/ttsAudio/"
     if not os.path.exists(audio_dir):
         os.makedirs(audio_dir)
-    audio_path = os.path.join(audio_dir, "audio.wav")
+    audio_path = os.path.join(audio_dir, f'{random_path}.wav')
     sf.write(audio_path, wav, 44100)
     return audio_path
