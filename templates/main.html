@@ -73,9 +73,9 @@
                 <img src="{{ url_for('static', filename='images/logo2.png') }}" alt="배경로고사진">
             </div>
             <div class="modalFlexbox">
-                <h2 id="result"> <span id="similarity"></span></h2>
-                <h4>당신은 아직 서울 사람... ㅡ.ㅡ</h4>
-                <img src="{{ url_for('static', filename='images/graph.png') }}" alt="배경로고사진">
+                <h2 id="score">당신의 올투리력은 {{similarity_score}}% 입니다 </h2>
+                <h4 id="message"></h4>
+                <img id="graphImage" src="{{ image_path }}" alt="그래프사진">
             </div>
         </div>
         </div>
