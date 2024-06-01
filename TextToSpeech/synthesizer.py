@@ -200,8 +200,6 @@ def synthesize(text):
     symbols = synthesizer.tts_config.characters.characters
     final_text = normalize_text(text, symbols)
     wav = synthesizer.tts(final_text, None, None)
-    result_path = "./TextToSpeech/result/result.wav"
-    sf.write(result_path, wav, 44100)
     random_path = generate_random_string()
     audio_dir = f"./static/audio/ttsAudio/"
     if not os.path.exists(audio_dir):
