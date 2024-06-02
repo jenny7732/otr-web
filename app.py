@@ -9,10 +9,6 @@ from intonnation_graph import plot_pitch
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = '/Users/user/otr-web/static/audio/userAudio'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
 @app.route('/')
 def hello_world():
     audio_url = request.args.get('audio_url')
@@ -37,7 +33,10 @@ def upload_file():
 
     if file:
         filename = file.filename
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        user_dir = f"./static/audio/userAudio/"
+        if not os.path.exists(user_dir):
+            os.makedirs(user_dir)
+        file_path = os.path.join(user_dir, filename)
         file.save(file_path)
         return jsonify({"message": "File successfully uploaded", "file_path": file_path}), 200
     

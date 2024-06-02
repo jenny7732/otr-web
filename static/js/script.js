@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // URL에서 audio_url 값을 추출
     const audioUrl = new URLSearchParams(window.location.search).get('audio_url');
-    const filePath = '/Users/user/otr-web/static/audio/userAudio/recorded_audio.wav';
+    const filePath = './static/audio/userAudio/recorded_audio.wav';
 
     btn.disabled = false; // 버튼 활성화
 
@@ -101,6 +101,7 @@ function stopRecording(){
 
             // 서버에 업로드
             const formData = new FormData();
+            
             formData.append('audio', audioBlob, 'recorded_audio.wav');
             fetch('/upload', {
                 method: 'POST',
