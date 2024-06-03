@@ -1,4 +1,5 @@
 import parselmouth
+import os
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import zscore
@@ -75,9 +76,12 @@ def plot_pitch(sound_file1, sound_file2, target_length=10, window_size=25):
 
     random_path = generate_random_string()
     # 이미지 경로 설정
+    pitchGraph_path = f'static/images/pitchGraph/'
+    
+    if not os.path.exists(pitchGraph_path):
+        os.makedirs(pitchGraph_path)
+
     image_path = f'static/images/pitchGraph/{random_path}.png'
-
-
 
     plt.savefig(image_path)
     plt.close()
