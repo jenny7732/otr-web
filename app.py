@@ -1,6 +1,7 @@
 from http import HTTPStatus
 import time
 import os
+import uuid
 from flask import Flask, render_template, request, jsonify, redirect, url_for, send_file
 from TextToSpeech.synthesizer import synthesize
 from similarity import get_similarity_score
@@ -32,10 +33,10 @@ def upload_file():
         return jsonify({"message": "No selected file"}), 400
 
     if file:
-        filename = file.filename
         user_dir = f"./static/audio/userAudio/"
         if not os.path.exists(user_dir):
             os.makedirs(user_dir)
+        filename = f"{uuid.uuid4()}.wav"
         file_path = os.path.join(user_dir, filename)
         file.save(file_path)
         return jsonify({"message": "File successfully uploaded", "file_path": file_path}), 200

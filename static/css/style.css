@@ -342,13 +342,13 @@ audio{
 
     .textbox{
         width: 85%;
-        height: 200px;
+        height: 150px;
         margin: 5px 0;
     }
 
     .textbox textarea{
         width: 90%;
-        height: 200px;
+        height: 150px;
         padding: 20px;
     }
 
@@ -359,7 +359,7 @@ audio{
 
     .practice{
         width: 85%;
-        height: 200px;
+        height: 150px;
         padding: 20px;
     }
 
@@ -402,19 +402,19 @@ audio{
 
     .audio_sentence{
         position: absolute;
-        top: 310px;
+        top: 260px;
         left: 30px;
         width: 85%;
     }
 
     #modalBody {
-        width: 90%;
+        width: 80%;
         height: auto;
         padding: 10px;
     }
 
     .modalLogo img {
-        width: 150px;
+        width: 120px;
     }
 
     .modalFlexbox img {
@@ -423,11 +423,15 @@ audio{
 
     .modalFlexbox h4, .modalFlexbox h2 {
         font-size: 16px;
+        margin-top: 5px;
     }
 
     #closeBtn {
-        font-size: 24px;
-        top: 10px;
-        right: 10px;
+        font-size: 16px;
+        top: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
     }
 }

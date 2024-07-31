@@ -13,10 +13,9 @@ document.getElementById('synthesize-form').addEventListener('submit', function()
     document.getElementById('loading-overlay').style.display = 'flex';
 });
 
-
-
+let filePath = '';
 document.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById('analysis-btn');
+    
     const modal = document.getElementById('modalWrap');
     const closeBtn = document.getElementById('closeBtn');
     const scoreElement = document.getElementById('score');
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // URL에서 audio_url 값을 추출
     const audioUrl = new URLSearchParams(window.location.search).get('audio_url');
-    const filePath = './static/audio/userAudio/recorded_audio.wav';
+    
 
     btn.disabled = false; // 버튼 활성화
 
@@ -71,6 +70,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 let audioRecorder;
 var audio = document.querySelector('audio'); 
+const recordstop_btn = document.getElementById('stopBtn');
+const btn = document.getElementById('analysis-btn');
+
 
 function startRecording(){
     navigator.mediaDevices.getUserMedia({ audio: true })
@@ -85,6 +87,7 @@ function startRecording(){
         });
 
         audioRecorder.startRecording();
+        recordstop_btn.style.color = "red";
     })
     .catch(function (error) {
         console.error('getUserMedia error:', error);
@@ -115,15 +118,17 @@ function stopRecording(){
             .then(data => {
                 console.log(data.message);
                 console.log(data.file_path);
+                filePath = data.file_path; // filePath 설정
             })
             .catch(error => console.error('Error:', error));
         });
     } else {
         console.error('audioRecorder is not defined');
     }
-
     document.getElementById("analysis-btn").style.backgroundColor = "#C24914";
     btn.disabled = false;
+    recordstop_btn.style.color = "black";
+    
 }
 
 document.getElementById('startBtn').addEventListener('click', startRecording);
