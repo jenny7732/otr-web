@@ -10,6 +10,10 @@
 </head>
 <body>
     <main>
+        <div class="loading-overlay" id="loading-overlay">
+            <img class="loading_img" src="{{ url_for('static', filename='images/logo.png') }}" alt="로고 이미지">
+            <div>Loading...</div>
+        </div>
         <div class="box">
             <header>
                 <div class="logo">
@@ -27,7 +31,7 @@
                     <h2>올투리 들어보기</h2>
                 </div>
                 <div class="textbox">
-                    <form action="/synthesize" method="post">
+                    <form id="synthesize-form" action="/synthesize" method="post">
                         <textarea id="input-textarea" name='sentence' placeholder="문장을 입력해 주세요." required></textarea>
                         <button type="submit" class="make-btn" id="submit-btn">
                             <i class="fa-solid fa-wand-magic-sparkles"></i> 올투리 생성하기

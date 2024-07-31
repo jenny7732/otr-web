@@ -9,6 +9,10 @@ document.getElementById("input-textarea").addEventListener("input", function() {
     }
 });
 
+document.getElementById('synthesize-form').addEventListener('submit', function() {
+    document.getElementById('loading-overlay').style.display = 'flex';
+});
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
