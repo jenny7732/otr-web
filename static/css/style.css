@@ -5,17 +5,17 @@ body {
     background-color: #F9E0AE;
 }
 
-header{
-    margin-bottom: 40px;
+.box {
     position: relative;
 }
+
 
 .logo {
     display: flex;
     align-items: center; 
     position: absolute;
-    top: 20px;
-    left: 40px;
+    top: -150px;
+    left: 0px;
 }
 
 .logo img {
@@ -27,6 +27,7 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: center; 
+    width: 100%;
 }
 
 .logo h1 {
@@ -43,13 +44,10 @@ header{
 
 
 .container {
-    margin-top: 200px;
+    margin-top: 230px;
     display: flex;
-    justify-content: space-around;
-}
-
-.audio_sentence{
-    margin-left: 40px;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .flexbox {
@@ -57,8 +55,13 @@ header{
     flex-direction: column;
 }
 
+.flexbox_center {
+    display: flex;
+    align-items: center;
+}
+
 .textbox {
-    width: 470px;
+    width: 85%;
     height: 280px;
     background-color: #fff;
     border-radius: 30px;
@@ -74,7 +77,7 @@ header{
 }
 
 .textbox textarea {
-    width: 450px;
+    width: 90%;
     height: 260px;
     padding: 30px;
     border-radius: 30px;
@@ -129,7 +132,7 @@ header{
 }
 
 .practice {
-    width: 470px;
+    width: 85%;
     height: 280px;
     padding: 20px;
     background-color: #fff;
@@ -256,4 +259,142 @@ audio{
 
 #score{
     color: #B14000;
+}
+
+@media only screen and (max-width: 580px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .box {
+        padding: 0;
+        position: relative;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: absolute;
+        top: -120px;
+        left: 20px;
+    }
+
+    .logo img {
+        width: 70px;
+        height: 90px;
+    }
+
+    .logo h1 {
+        font-size: 30px;
+        margin: 10px 0 5px;
+    }
+
+    .logo p {
+        font-size: 12px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px 30px;
+        margin-top: 120px;
+    }
+
+    .flexbox {
+        width: 100%;
+        margin: 30px 0px;
+    }
+
+    .textbox{
+        width: 85%;
+        height: 200px;
+        margin: 5px 0;
+    }
+
+    .textbox textarea{
+        width: 90%;
+        height: 200px;
+        padding: 20px;
+    }
+
+    .empty_box{
+        height: 20px;
+        display: block;
+    }
+
+    .practice{
+        width: 85%;
+        height: 200px;
+        padding: 20px;
+    }
+
+    .make-btn, .analysis-btn {
+        bottom: 10px;
+        right: 10px;
+        font-size: 14px;
+    }
+
+    #startBtn {
+        top: 20px;
+        right: 60px;
+    }
+
+    #stopBtn {
+        top: 20px;
+        right: 20px;
+    }
+
+    .voice-btn i {
+        font-size: 30px;
+    }
+
+    .practice p {
+        font-size: 12px;
+    }
+
+    .practice img {
+        display: none;
+    }
+
+    audio {
+        width: 85%;
+        margin: 5px 0px 3px 0px;
+    }
+
+    .sentence {
+        margin-left: 20px;
+    }
+
+    .audio_sentence{
+        position: absolute;
+        top: 310px;
+        left: 30px;
+        width: 85%;
+    }
+
+    #modalBody {
+        width: 90%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .modalLogo img {
+        width: 150px;
+    }
+
+    .modalFlexbox img {
+        width: 200px;
+    }
+
+    .modalFlexbox h4, .modalFlexbox h2 {
+        font-size: 16px;
+    }
+
+    #closeBtn {
+        font-size: 24px;
+        top: 10px;
+        right: 10px;
+    }
 }
